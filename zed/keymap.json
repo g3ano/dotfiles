@@ -1,1 +1,58 @@
-/home/g3ano/.var/app/dev.zed.Zed/config/keymap.json
+[
+	{
+		"bindings": {
+			"shift shift": "file_finder::Toggle"
+		}
+	},
+	{
+		"context": "Pane",
+		"bindings": {
+			"ctrl-w q": "pane::CloseActiveItem",
+			"alt-r": "search::ToggleRegex"
+		}
+	},
+	{
+		"context": "VimControl && !menu",
+		"bindings": {
+			"g F": "project_search::ToggleFilters",
+			"g n": "search::SelectNextMatch",
+			"g shift-n": "search::SelectPreviousMatch"
+		}
+	},
+	{
+		"context": "Workspace",
+		"bindings": {
+			"ctrl-s": null,
+			"ctrl-k s": null,
+			"ctrl-shift-s": null,
+			"ctrl-n": null,
+			"ctrl-shift-n": null
+		}
+	},
+	{
+		"context": "vim_mode == insert && Editor",
+		"bindings": {
+			"ctrl-w": "editor::DeleteToPreviousWordStart"
+		}
+	},
+	{
+		"context": "Terminal",
+		"bindings": {
+			"ctrl-p": null,
+			"ctrl-`": "workspace::ToggleBottomDock"
+		}
+	},
+	{
+		"context": "FileFinder",
+		"bindings": {
+			"ctrl": null
+		}
+	},
+	{
+		"context": "GitPanel && ChangesList",
+		"use_key_equivalents": true,
+		"bindings": {
+			"o": "menu::Confirm"
+		}
+	}
+]
