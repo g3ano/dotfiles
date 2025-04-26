@@ -1,6 +1,6 @@
 {
-	"icon_theme": "Catppuccin Frappé",
-	"theme": "Catppuccin Frappé",
+	"icon_theme": "Zed (Default)",
+	"theme": "One Dark",
 	"edit_predictions": {
 		"mode": "eager",
 		"copilot": {
@@ -9,18 +9,23 @@
 		},
 		"enabled_in_assistant": false
 	},
-	"ui_font_family": "Hack",
+	"ui_font_family": "Adwaita Mono",
 	"ui_font_size": 16,
-	"buffer_font_family": "Hack",
-	"buffer_font_size": 16,
+	"buffer_font_family": "Adwaita Mono",
+	"buffer_font_size": 15.5,
 	"soft_wrap": "editor_width",
 	"base_keymap": "VSCode",
-	"max_tabs": 20,
+	"max_tabs": 30,
 	"extend_comment_on_newline": true,
 	"vim_mode": true,
 	"autosave": "on_window_change",
 	"cursor_blink": false,
-	"completion_documentation_secondary_query_debounce": 500,
+	"show_completions_on_input": true,
+	"completions": {
+		"lsp": true,
+		"lsp_fetch_timeout_ms": 0,
+		"lsp_insert_mode": "replace_subsequence"
+	},
 	"vertical_scroll_margin": 10,
 	"scroll_beyond_last_line": "vertical_scroll_margin",
 	"use_smartcase_search": true,
@@ -28,7 +33,6 @@
 	"expand_excerpt_lines": 20,
 	"show_whitespaces": "none",
 	"use_autoclose": true,
-	"show_completions_on_input": true,
 	"relative_line_numbers": true,
 	"hard_tabs": true,
 	"tab_size": 4,
