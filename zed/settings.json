@@ -313,7 +313,7 @@
 		}
 	},
 	"node": {
-		"path": "/home/g3ano/.nvm/versions/node/v22.15.1/bin/node",
-		"npm_path": "/home/g3ano/.nvm/versions/node/v22.15.1/bin/npm"
+		"path": "$HOME/.nvm/versions/node/v22.15.1/bin/node",
+		"npm_path": "$HOME/.nvm/versions/node/v22.15.1/bin/npm"
 	}
 }
