@@ -1,7 +1,8 @@
 [
 	{
 		"bindings": {
-			"shift shift": "file_finder::Toggle"
+			"shift shift": "file_finder::Toggle",
+			"ctrl-?": "agent::ToggleFocus"
 		}
 	},
 	{
@@ -54,5 +55,16 @@
 		"bindings": {
 			"o": "menu::Confirm"
 		}
+	},
+	{
+		"context": "Editor",
+		"bindings": {
+			"ctrl-enter": "assistant::Assist",
+			"ctrl-;": "editor::ToggleInlineDiagnostics"
+		}
+	},
+	{
+		"context": "AgentPanel",
+		"bindings": {}
 	}
 ]
