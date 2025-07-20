@@ -62,9 +62,5 @@
 			"ctrl-enter": "assistant::Assist",
 			"ctrl-;": "editor::ToggleInlineDiagnostics"
 		}
-	},
-	{
-		"context": "AgentPanel",
-		"bindings": {}
 	}
 ]
