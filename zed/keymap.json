@@ -62,5 +62,11 @@
 			"ctrl-enter": "assistant::Assist",
 			"ctrl-;": "editor::ToggleInlineDiagnostics"
 		}
+	},
+	{
+		"context": "FileFinder || (FileFinder > Picker > Editor)",
+		"bindings": {
+			"ctrl-p": "file_finder::SelectPrevious"
+		}
 	}
 ]

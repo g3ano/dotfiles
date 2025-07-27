@@ -1,5 +1,5 @@
 {
-	"icon_theme": "Zed (Default)",
+	"icon_theme": "Catppuccin Frappé",
 	"theme": "One Dark",
 	"ui_font_family": "Adwaita Mono",
 	"ui_font_size": 16,
@@ -132,7 +132,11 @@
 		"file_icons": true,
 		"indent_size": 20,
 		"hide_gitignore": false,
-		"entry_spacing": "comfortable"
+		"entry_spacing": "comfortable",
+		"sticky_scroll": false,
+		"git_status": true,
+		"hide_root": false,
+		"show_diagnostics": "all"
 	},
 	"git_panel": {
 		"default_width": 400,
@@ -313,7 +317,7 @@
 		}
 	},
 	"node": {
-		"path": "$HOME/.nvm/versions/node/v22.15.1/bin/node",
-		"npm_path": "$HOME/.nvm/versions/node/v22.15.1/bin/npm"
+		"path": "/home/g3ano/.nvm/versions/node/v22.15.1/bin/node",
+		"npm_path": "/home/g3ano/.nvm/versions/node/v22.15.1/bin/npm"
 	}
 }
