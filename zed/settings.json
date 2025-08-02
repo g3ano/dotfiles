@@ -312,6 +312,7 @@
 		}
 	},
 	"terminal": {
+		"button": false,
 		"env": {
 			"EDITOR": "zed --wait"
 		}
