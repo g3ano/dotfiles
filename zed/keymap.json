@@ -36,7 +36,8 @@
 	{
 		"context": "Terminal",
 		"bindings": {
-			"ctrl-p": null
+			"ctrl-p": null,
+			"ctrl-n": null
 		}
 	},
 	{
