@@ -32,6 +32,7 @@
 	"show_wrap_guides": false,
 	"seed_search_query_from_cursor": "selection",
 	"vim_mode": true,
+	"bottom_dock_layout": "full",
 	"minimap": {
 		"show": "always",
 		"current_line_highlight": null,
@@ -46,14 +47,16 @@
 		"enabled": false
 	},
 	"agent": {
-		"single_file_review": false,
+		"enabled": true,
+		"use_modifier_to_send": true,
+		"play_sound_when_agent_done": true,
+		"single_file_review": true,
 		"default_profile": "minimal",
 		"default_model": {
-			"provider": "zed.dev",
-			"model": "claude-sonnet-4"
+			"provider": "openrouter",
+			"model": "x-ai/grok-4-fast:free"
 		},
-		"default_width": 400,
-		"enabled": false
+		"default_width": 400
 	},
 	"features": {
 		"edit_prediction_provider": "supermaven"
@@ -112,13 +115,18 @@
 		"breadcrumbs": true,
 		"quick_actions": true,
 		"selections_menu": false,
-		"agent_review": false
+		"agent_review": false,
+		"code_actions": false
 	},
 	"collaboration_panel": {
 		"default_width": 400,
-		"button": false
+		"button": false,
+		"dock": "left"
 	},
 	"project_panel": {
+		"button": true,
+		"dock": "left",
+		"starts_open": true,
 		"scrollbar": {
 			"show": "never"
 		},
@@ -149,10 +157,6 @@
 	},
 	"outline_panel": {
 		"default_width": 400
-	},
-	"chat_panel": {
-		"default_width": 400,
-		"button": "never"
 	},
 	"telemetry": {
 		"diagnostics": false,
@@ -313,12 +317,10 @@
 	},
 	"terminal": {
 		"button": false,
-		"env": {
-			"EDITOR": "zed --wait"
-		}
+		"cursor_shape": "block"
 	},
 	"node": {
-		"path": "/home/g3ano/.nvm/versions/node/v22.15.1/bin/node",
-		"npm_path": "/home/g3ano/.nvm/versions/node/v22.15.1/bin/npm"
+		"path": "/home/g3ano/.nvm/versions/node/v22.19.0/bin/node",
+		"npm_path": "/home/g3ano/.nvm/versions/node/v22.19.0/bin/npm"
 	}
 }

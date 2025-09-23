@@ -28,10 +28,12 @@ local options = {
 	backspace = "indent,eol,start",
 	linespace = 1,
 	autowriteall = true,
+    wildmenu = true,
 }
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-
+vim.opt.path:append("**")
+vim.opt.wildignore:append({ "*/node_modules/*", "*/.git/*" })

@@ -1,23 +1,26 @@
 # Source global definitions
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+if [ -f "/etc/bashrc" ]; then
+    . "/etc/bashrc"
 fi
 
-# User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+# Source aliases
+if [ -f "$HOME/.bash_aliases" ]; then
+    source "$HOME/.bash_aliases"
 fi
 
-# System wide specific environment
-if ! [[ "$PATH" =~ "/usr/local/bin:" ]]; then
-    PATH="/usr/local/bin:$PATH"
+# Update PATH
+if ! echo ":$PATH:" | grep -q ":$HOME/.local/bin:$HOME/bin:"; then
+    PATH="$PATH:$HOME/.local/bin:$HOME/bin"
+fi
+
+if ! echo ":$PATH:" | grep -q ":/usr/local/bin:"; then
+    PATH="$PATH:/usr/local/bin"
 fi
 
 export PATH
 
-# User specific aliases and functions
-if [ -d ~/.bashrc.d ]; then
-    for rc in ~/.bashrc.d/*; do
+if [ -d "$HOME/.bashrc.d" ]; then
+    for rc in "$HOME/.bashrc.d/*" ; do
         if [ -f "$rc" ]; then
             . "$rc"
         fi
@@ -25,16 +28,10 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-# Load aliases
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
-fi
-
 # Options
 bind "set completion-ignore-case on"
 
-# Git branch indicator
-# with color based on status
+# Git branch indicator with color based on status
 git_branch() {
     # Get current branch name (or return if not in a git repo)
     local branch
@@ -75,8 +72,10 @@ export PS1="\[\033[1;32m\]\u@\h\[\033[0m\]:\[\033[1;32m\]\w\[\033[0m\]\$(git_bra
 
 # Tools
 # Go
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go/bin
+if ! echo ":$PATH:" | grep -q ":$HOME/go/bin:/usr/local/go/bin:"; then
+	export PATH="$PATH:$HOME/go/bin:/usr/local/go/bin"
+fi
+
 export GOPATH=$HOME/go
 export GOBIN=$HOME/go/bin
 
@@ -88,5 +87,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Bun
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
+if ! echo ":$PATH:" | grep -q ":$BUN_INSTALL/bin:"; then
+	export PATH="$PATH:$BUN_INSTALL/bin"
+fi
