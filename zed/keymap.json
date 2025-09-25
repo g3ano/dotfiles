@@ -23,7 +23,7 @@
 		"context": "GitPanel && ChangesList",
 		"use_key_equivalents": true,
 		"bindings": {
-			"o": "menu::Confirm"
+			"p": "menu::Confirm"
 		}
 	},
 	{
