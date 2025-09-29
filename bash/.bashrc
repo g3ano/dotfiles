@@ -99,5 +99,8 @@ if ! echo ":$PATH:" | grep -q ":$BUN_INSTALL/bin:"; then
 	export PATH="$PATH:$BUN_INSTALL/bin"
 fi
 
-# Flatpak
+# Flatpak exports
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/$USER/.local/share/flatpak/exports/share
+
+# SSH Agent
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"

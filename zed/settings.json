@@ -1,6 +1,14 @@
 {
-	"icon_theme": "Catppuccin Frappé",
-	"theme": "One Dark",
+	"icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Frappé",
+    "dark": "Catppuccin Frappé"
+  },
+	"theme": {
+    "mode": "system",
+    "light": "One Dark",
+    "dark": "One Dark"
+  },
 	"ui_font_family": "Adwaita Mono",
 	"ui_font_size": 16,
 	"buffer_font_family": "Adwaita Mono",
@@ -320,7 +328,7 @@
 		"cursor_shape": "block"
 	},
 	"node": {
-		"path": "/home/g3ano/.nvm/versions/node/v22.19.0/bin/node",
-		"npm_path": "/home/g3ano/.nvm/versions/node/v22.19.0/bin/npm"
+		"path": "/home/g3ano/.nvm/versions/node/v22.20.0/bin/node",
+		"npm_path": "/home/g3ano/.nvm/versions/node/v22.20.0/bin/npm"
 	}
 }
