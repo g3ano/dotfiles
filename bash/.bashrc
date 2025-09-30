@@ -104,3 +104,21 @@ export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/$USER/.
 
 # SSH Agent
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+
+# SSH Keys
+if [ -d "$HOME/.ssh" ]; then
+    for pubKey in "$HOME/.ssh"/*.pub; do
+        if [ ! -f "$pubKey" ]; then
+            continue
+        fi
+
+        privateKey="${pubKey%.pub}"
+        if [ ! -f "$privateKey" ]; then
+            continue
+        fi
+
+        if ! ssh-add -l | grep -q "$(ssh-keygen -lf "$pubKey" | awk '{print $2}')"; then
+            ssh-add "$privateKey" 2>/dev/null || echo "[WARN] Failed to add $privateKey (may require passphrase)"
+        fi
+    done
+fi
