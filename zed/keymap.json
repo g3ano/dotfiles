@@ -23,14 +23,13 @@
 		"context": "GitPanel && ChangesList",
 		"use_key_equivalents": true,
 		"bindings": {
-			"p": "menu::Confirm"
+			"o": "menu::Confirm"
 		}
 	},
 	{
-		"context": "Editor",
+		"context": "ProjectPanel && not_editing",
 		"bindings": {
-			"ctrl-enter": "assistant::Assist",
-			"ctrl-;": "editor::ToggleInlineDiagnostics"
+			"o": "project_panel::Open"
 		}
 	},
 	{
@@ -38,6 +37,43 @@
 		"bindings": {
 			"ctrl-p": null,
 			"ctrl-n": null
+		}
+	},
+	{
+		"context": "Editor",
+		"bindings": {
+			"ctrl-;": "editor::ToggleInlineDiagnostics",
+			"ctrl-m": null
+		}
+	},
+	{
+		"context": "Editor && vim_mode == insert",
+		"bindings": {
+			"ctrl-w": "editor::DeleteToPreviousWordStart"
+		}
+	},
+	{
+		"context": "Editor && mode == single_line",
+		"bindings": {
+			"ctrl-h": "editor::Backspace",
+			"ctrl-u": "editor::DeleteToBeginningOfLine",
+			"ctrl-w": "editor::DeleteToPreviousWordStart"
+		}
+	},
+	{
+		"context": "ProjectSearchBar && !in_replace > Editor",
+		"bindings": {
+			"ctrl-p": "search::PreviousHistoryQuery",
+			"ctrl-n": "search::NextHistoryQuery",
+			"ctrl-m": "vim::SearchSubmit"
+		}
+	},
+	{
+		"context": "BufferSearchBar && !in_replace > Editor",
+		"bindings": {
+			"ctrl-p": "search::PreviousHistoryQuery",
+			"ctrl-n": "search::NextHistoryQuery",
+			"ctrl-m": "vim::SearchSubmit"
 		}
 	},
 	{

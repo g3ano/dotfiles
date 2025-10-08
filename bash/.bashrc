@@ -77,6 +77,10 @@ git_branch() {
 # Main prompt
 export PS1="\[\033[1;32m\]\u@\h\[\033[0m\]:\[\033[1;32m\]\w\[\033[0m\]\$(git_branch)$ "
 
+# Editors
+export EDITOR=nvim
+export VISUAL=nvim
+
 # Tools
 # Go
 if ! echo ":$PATH:" | grep -q ":$HOME/go/bin:/usr/local/go/bin:"; then
