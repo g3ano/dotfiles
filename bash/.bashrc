@@ -17,6 +17,10 @@ if ! echo ":$PATH:" | grep -q ":/usr/local/bin:"; then
     PATH="$PATH:/usr/local/bin"
 fi
 
+if ! echo ":$PATH:" | grep -q ":$HOME/.config/composer/vendor/bin:"; then
+    PATH="$PATH:$HOME/.config/composer/vendor/bin"
+fi
+
 export PATH
 
 if [ -d "$HOME/.bashrc.d" ]; then

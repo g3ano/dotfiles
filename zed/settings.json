@@ -13,6 +13,7 @@
   "ui_font_size": 16,
   "buffer_font_family": "Hack Nerd Font",
   "buffer_font_size": 16,
+  "agent_font_size": 16,
   "soft_wrap": "editor_width",
   "base_keymap": "VSCode",
   "max_tabs": 30,
@@ -24,7 +25,8 @@
   "vertical_scroll_margin": 10,
   "use_smartcase_search": true,
   "confirm_quit": true,
-  "expand_excerpt_lines": 40,
+  "expand_excerpt_lines": 10,
+  "excerpt_context_lines": 10,
   "show_whitespaces": "none",
   "use_autoclose": true,
   "relative_line_numbers": true,
@@ -41,6 +43,8 @@
   "seed_search_query_from_cursor": "selection",
   "vim_mode": true,
   "bottom_dock_layout": "full",
+  "cursor_shape": "bar",
+  "hide_mouse": "on_typing_and_movement",
   "minimap": {
     "show": "always",
     "current_line_highlight": null,
@@ -64,7 +68,7 @@
     "default_profile": "write",
     "default_model": {
       "provider": "openrouter",
-      "model": "google/gemini-2.0-flash-exp:free"
+      "model": "z-ai/glm-4.5-air:free"
     },
     "default_width": 400
   },
@@ -101,14 +105,12 @@
     "**/.husky",
     "**/.turbo",
     "**/.vscode-test",
-    "**/.vscode",
     "**/.next",
     "**/.storybook",
     "**/.tap",
     "**/.nyc_output",
     "**/report",
-    "**/node_modules",
-    "**/vendor/**"
+    "**/routeTree.gen.ts"
   ],
   "active_pane_modifiers": {
     "border_size": 1,
@@ -148,7 +150,7 @@
     "auto_reveal_entries": true,
     "folder_icons": false,
     "file_icons": true,
-    "indent_size": 20,
+    "indent_size": 14,
     "hide_gitignore": false,
     "entry_spacing": "comfortable",
     "sticky_scroll": false,
@@ -212,13 +214,24 @@
       "format_on_save": "on",
       "formatter": "language_server"
     },
-    "PHP": {
-      "language_servers": ["intelephense", "!phpactor", "..."],
+    "Templ": {
+      "tab_size": 4,
       "format_on_save": "on",
-      "formatter": "language_server"
+      "formatter": "language_server",
+      "language_servers": [
+        "templ",
+        "tailwindcss-language-server",
+        "vscode-html-language-server",
+        "emmet-language-server"
+      ]
     },
-    "TSX": {
-      "language_servers": ["!typescript-language-server", "vtsls", "..."],
+    "PHP": {
+      "tab_size": 4,
+      "format_on_save": "on",
+      "formatter": "language_server",
+      "language_servers": ["intelephense", "..."]
+    },
+    "JavaScript": {
       "tab_size": 2,
       "format_on_save": "on",
       "formatter": {
@@ -227,24 +240,13 @@
           "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       },
+      "language_servers": ["!typescript-language-server", "vtsls", "..."],
       "code_actions_on_format": {
         "source.fixAll.eslint": true,
         "source.organizeImports": true
       }
     },
-    "JavaScript": {
-      "language_servers": ["!typescript-language-server", "vtsls", "..."],
-      "tab_size": 2,
-      "format_on_save": "on",
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      }
-    },
     "TypeScript": {
-      "language_servers": ["!typescript-language-server", "vtsls", "..."],
       "tab_size": 2,
       "format_on_save": "on",
       "formatter": {
@@ -253,6 +255,22 @@
           "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       },
+      "language_servers": ["!typescript-language-server", "vtsls", "..."],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+        "source.organizeImports": true
+      }
+    },
+    "TSX": {
+      "tab_size": 2,
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "language_servers": ["!typescript-language-server", "vtsls", "..."],
       "code_actions_on_format": {
         "source.fixAll.eslint": true,
         "source.organizeImports": true
@@ -289,13 +307,17 @@
       "tab_size": 2,
       "hard_tabs": true,
       "format_on_save": "on"
+    },
+    "SQL": {
+      "format_on_save": "on",
+      "formatter": "language_server"
     }
   },
   "lsp": {
     "vtsls": {
       "settings": {
         "typescript": {
-          "tsserver": { "maxTsServerMemory": 512 },
+          "tsserver": { "maxTsServerMemory": 256 },
           "inlay_hints": {
             "enabled": true,
             "show_parameter_hints": false,
@@ -310,10 +332,11 @@
     },
     "tailwindcss-language-server": {
       "settings": {
-        "classAttributes": ["class", "className", "ngClass", "styles"],
         "includeLanguages": {
-          "templ": "html",
-          "Templ": "html"
+          "templ": "html"
+        },
+        "experimental": {
+          "classRegex": ["class=\"([^\"]*)\"", "className=\"([^\"]*)\""]
         }
       }
     },
