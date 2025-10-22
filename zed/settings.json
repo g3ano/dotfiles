@@ -59,6 +59,10 @@
     "enabled": false
   },
   "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5-mini"
+    },
     "enabled": true,
     "always_allow_tool_actions": true,
     "default_view": "thread",
@@ -67,8 +71,8 @@
     "single_file_review": true,
     "default_profile": "write",
     "default_model": {
-      "provider": "openrouter",
-      "model": "z-ai/glm-4.5-air:free"
+      "provider": "copilot_chat",
+      "model": "claude-3.5-sonnet"
     },
     "default_width": 400
   },

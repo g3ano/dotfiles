@@ -1,3 +1,3 @@
 require("options")
-require("Lazy")
+require("lazy")
 require("autocommands")

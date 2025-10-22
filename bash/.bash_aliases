@@ -18,4 +18,4 @@
 alias vim="nvim"
 
 alias zed="flatpak run dev.zed.Zed"
-alias code="flatpak run com.visualstudio.code"
+# alias code="flatpak run com.visualstudio.code"
