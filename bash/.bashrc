@@ -107,6 +107,14 @@ if ! echo ":$PATH:" | grep -q ":$BUN_INSTALL/bin:"; then
 	export PATH="$PATH:$BUN_INSTALL/bin"
 fi
 
+# pnpm
+export PNPM_HOME="/home/g3ano/.local/share/pnpm"
+
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
 # Flatpak exports
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/$USER/.local/share/flatpak/exports/share
 
