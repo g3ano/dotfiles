@@ -16,7 +16,7 @@
 	"agent_ui_font_size": 17,
 	"soft_wrap": "editor_width",
 	"base_keymap": "VSCode",
-	"max_tabs": 30,
+	"max_tabs": 15,
 	"extend_comment_on_newline": true,
 	"autosave": "on_window_change",
 	"cursor_blink": false,
@@ -46,14 +46,16 @@
 	"cursor_shape": "bar",
 	"hide_mouse": "on_typing_and_movement",
 	"lsp_max_concurrent_files": 1,
+	"inline_code_actions": false,
 	"minimap": {
 		"show": "always",
 		"current_line_highlight": null,
 		"thumb_border": "none"
 	},
+	"completion_menu_scrollbar": "never",
 	"completions": {
 		"lsp": true,
-		"lsp_fetch_timeout_ms": 0,
+		"lsp_fetch_timeout_ms": 500,
 		"lsp_insert_mode": "replace_subsequence"
 	},
 	"preview_tabs": {
@@ -70,7 +72,7 @@
 		"default_profile": "write",
 		"default_model": {
 			"provider": "openrouter",
-			"model": "x-ai/grok-4.1-fast:free"
+			"model": "mistralai/mistral-small-3.1-24b-instruct:free"
 		},
 		"default_width": 400
 	},
@@ -105,7 +107,7 @@
 		"**/.settings",
 		"**/out",
 		"**/dist",
-		// "**/build",
+		"**/build",
 		"**/.husky",
 		"**/.turbo",
 		"**/.vscode-test",
@@ -119,7 +121,8 @@
 		"**/.output",
 		"**/.cache",
 		"**/node_modules",
-		"**/.svelte-kit"
+		"**/.svelte-kit",
+		"**/.react-router"
 	],
 	"active_pane_modifiers": {
 		"border_size": 1,
@@ -205,8 +208,8 @@
 	},
 	"gutter": {
 		"line_numbers": true,
+		"runnables": false,
 		"folds": true,
-		"runnables": true,
 		"breakpoints": false
 	},
 	"vim": {
@@ -214,8 +217,15 @@
 		"use_smartcase_find": true
 	},
 	"file_types": {
-		"Dockerfile": ["Dockerfile", "Dockerfile.*"],
-		"JSON": ["json", "jsonc", "*.code-snippets"]
+		"Dockerfile": [
+			"Dockerfile",
+			"Dockerfile.*"
+		],
+		"JSON": [
+			"json",
+			"jsonc",
+			"*.code-snippets"
+		]
 	},
 	"prettier": {
 		"allowed": false
@@ -231,37 +241,66 @@
 			"tab_size": 4,
 			"format_on_save": "on",
 			"formatter": "language_server",
-			"language_servers": ["intelephense", "..."]
+			"language_servers": [
+				"intelephense",
+				"..."
+			]
 		},
 		"JavaScript": {
 			"tab_size": 2,
 			"format_on_save": "on",
 			"formatter": {
-				"language_server": { "name": "biome" }
+				"language_server": {
+					"name": "typescript-language-server"
+				}
 			},
 			"language_servers": [
-				"biome",
 				"typescript-language-server",
+				"!biome",
+				"!tailwindcss-language-server",
 				"!vtsls",
 				"!eslint",
-				"!tailwindcss-language-server",
 				"..."
 			],
 			"code_actions_on_format": {
 				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true
+				"source.organizeImports.biome": true,
+				"source.removeUnusedImports.biome": true
 			}
 		},
-		"TypeScript": {
-			"enable": true,
+		"JSX": {
 			"tab_size": 2,
 			"format_on_save": "on",
 			"formatter": {
-				"language_server": { "name": "biome" }
+				"language_server": {
+					"name": "typescript-language-server"
+				}
 			},
 			"language_servers": [
-				"biome",
 				"typescript-language-server",
+				"tailwindcss-language-server",
+				"!biome",
+				"!vtsls",
+				"!eslint",
+				"..."
+			],
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true,
+				"source.removeUnusedImports.biome": true
+			}
+		},
+		"TypeScript": {
+			"tab_size": 2,
+			"format_on_save": "on",
+			"formatter": {
+				"language_server": {
+					"name": "typescript-language-server"
+				}
+			},
+			"language_servers": [
+				"typescript-language-server",
+				"!biome",
 				"!vtsls",
 				"!eslint",
 				"!tailwindcss-language-server",
@@ -269,26 +308,30 @@
 			],
 			"code_actions_on_format": {
 				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true
+				"source.organizeImports.biome": true,
+				"source.removeUnusedImports.biome": true
 			}
 		},
 		"TSX": {
 			"tab_size": 2,
 			"format_on_save": "on",
 			"formatter": {
-				"language_server": { "name": "biome" }
+				"language_server": {
+					"name": "typescript-language-server"
+				}
 			},
 			"language_servers": [
-				"biome",
 				"typescript-language-server",
+				"tailwindcss-language-server",
+				"!biome",
 				"!vtsls",
 				"!eslint",
-				"!tailwindcss-language-server",
 				"..."
 			],
 			"code_actions_on_format": {
 				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true
+				"source.organizeImports.biome": true,
+				"source.removeUnusedImports.biome": true
 			}
 		},
 		"CSS": {
@@ -296,11 +339,13 @@
 			"hard_tabs": true,
 			"format_on_save": "on",
 			"formatter": {
-				"language_server": { "name": "biome" }
+				"language_server": {
+					"name": "vscode-css-language-server"
+				}
 			},
 			"language_servers": [
 				"vscode-css-language-server",
-				"!tailwindcss-language-server",
+				"tailwindcss-language-server",
 				"..."
 			]
 		},
@@ -310,12 +355,13 @@
 			"format_on_save": "on",
 			"formatter": {
 				"language_server": {
-					"name": "biome"
+					"name": "vscode-html-language-server"
 				}
 			},
 			"language_servers": [
 				"vscode-html-language-server",
 				"!tailwindcss-language-server",
+				"!biome",
 				"..."
 			]
 		},
@@ -324,11 +370,18 @@
 			"hard_tabs": true,
 			"format_on_save": "on",
 			"formatter": {
-				"language_server": { "name": "biome" }
+				"language_server": {
+					"name": "json-language-server"
+				}
 			},
+			"language_servers": [
+				"json-language-server",
+				"..."
+			],
 			"code_actions_on_format": {
 				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true
+				"source.organizeImports.biome": true,
+				"source.removeUnusedImports.biome": true
 			}
 		},
 		"JSONC": {
@@ -336,11 +389,18 @@
 			"hard_tabs": true,
 			"format_on_save": "on",
 			"formatter": {
-				"language_server": { "name": "biome" }
+				"language_server": {
+					"name": "json-language-server"
+				}
 			},
+			"language_servers": [
+				"json-language-server",
+				"..."
+			],
 			"code_actions_on_format": {
 				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true
+				"source.organizeImports.biome": true,
+				"source.removeUnusedImports.biome": true
 			}
 		},
 		"Markdown": {
@@ -350,7 +410,10 @@
 			"formatter": {
 				"external": {
 					"command": "prettier",
-					"arguments": ["--stdin-filepath", "{buffer_path}"]
+					"arguments": [
+						"--stdin-filepath",
+						"{buffer_path}"
+					]
 				}
 			}
 		},
@@ -361,7 +424,10 @@
 			"formatter": {
 				"external": {
 					"command": "prettier",
-					"arguments": ["--stdin-filepath", "{buffer_path}"]
+					"arguments": [
+						"--stdin-filepath",
+						"{buffer_path}"
+					]
 				}
 			}
 		},
@@ -374,26 +440,71 @@
 		"SQL": {
 			"format_on_save": "on",
 			"formatter": "language_server"
+		},
+		"Svelte": {
+			"tab_size": 2,
+			"format_on_save": "on",
+			"formatter": {
+				"language_server": {
+					"name": "svelte-language-server"
+				}
+			},
+			"language_servers": [
+				"svelte-language-server",
+				"tailwindcss-language-server",
+				"!typescript-language-server",
+				"!biome",
+				"!vtsls",
+				"!eslint",
+				"..."
+			]
 		}
 	},
 	"lsp": {
-		"vtsls": {
+		"typescript-language-server": {
+			"binary": {
+				"path": "/home/g3ano/.bun/bin/bun",
+				"arguments": [
+					"--bun",
+					"/home/g3ano/.bun/bin/typescript-language-server",
+					"--stdio"
+				]
+			},
 			"settings": {
 				"typescript": {
-					"tsserver": { "maxTsServerMemory": 700 },
-					"inlay_hints": {
-						"enabled": false,
-						"show_parameter_hints": false,
-						"show_other_hints": false,
-						"show_type_hints": false
+					"tsserver": {
+						"maxTsServerMemory": 1048
+					},
+					"inlayHints": {
+						"includeInlayParameterNameHints": "none",
+						"includeInlayEnumMemberValueHints": false,
+						"includeInlayPropertyDeclarationTypeHints": false,
+						"includeInlayFunctionLikeReturnTypeHints": false,
+						"includeInlayVariableTypeHints": false
 					},
 					"preferences": {
-						"importModuleSpecifier": "non-relative"
+						"disableSuggestions": false,
+						"includePackageJsonAutoImports": "off",
+						"autoImportFileExcludePatterns": [
+							"**/node_modules/**"
+						]
+					},
+					"format": {
+						"indentSize": 2,
+						"convertTabsToSpaces": false
 					}
 				}
 			}
 		},
 		"tailwindcss-language-server": {
+			"binary": {
+				"path": "/home/g3ano/.bun/bin/bun",
+				"arguments": [
+					"--bun",
+					"/home/g3ano/.bun/bin/tailwindcss-language-server",
+					"--stdio"
+				]
+			},
 			"settings": {
 				"lint": {
 					"cssConflict": false,
@@ -401,11 +512,18 @@
 					"invalidScreen": false,
 					"invalidVariant": false
 				},
-				"experimental": {
-					"classRegex": ["className=\"([^\"]*)\"", "class=\"([^\"]*)\""]
-				},
 				"validate": false,
-				"showPixelEquivalents": false
+				"showPixelEquivalents": false,
+				"classFunctions": [
+					"cva",
+					"cx"
+				],
+				"experimental": {
+					"classRegex": [
+						"className=\"([^\"]*)\"",
+						"class=\"([^\"]*)\""
+					]
+				}
 			}
 		},
 		"json-language-server": {
@@ -437,6 +555,16 @@
 			"settings": {
 				"require_config_file": false
 			}
+		},
+		"svelte-language-server": {
+			// "binary": {
+			// 	"path": "/home/g3ano/.bun/bin/bun",
+			// 	"arguments": [
+			// 		"--bun",
+			// 		"/home/g3ano/.bun/bin/typescript-language-server",
+			// 		"--stdio"
+			// 	]
+			// },
 		}
 	},
 	"terminal": {
