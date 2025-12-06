@@ -262,11 +262,6 @@
 				"!eslint",
 				"..."
 			],
-			"code_actions_on_format": {
-				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true,
-				"source.removeUnusedImports.biome": true
-			}
 		},
 		"JSX": {
 			"tab_size": 2,
@@ -284,11 +279,6 @@
 				"!eslint",
 				"..."
 			],
-			"code_actions_on_format": {
-				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true,
-				"source.removeUnusedImports.biome": true
-			}
 		},
 		"TypeScript": {
 			"tab_size": 2,
@@ -306,11 +296,6 @@
 				"!tailwindcss-language-server",
 				"..."
 			],
-			"code_actions_on_format": {
-				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true,
-				"source.removeUnusedImports.biome": true
-			}
 		},
 		"TSX": {
 			"tab_size": 2,
@@ -328,11 +313,6 @@
 				"!eslint",
 				"..."
 			],
-			"code_actions_on_format": {
-				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true,
-				"source.removeUnusedImports.biome": true
-			}
 		},
 		"CSS": {
 			"tab_size": 2,
@@ -378,11 +358,6 @@
 				"json-language-server",
 				"..."
 			],
-			"code_actions_on_format": {
-				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true,
-				"source.removeUnusedImports.biome": true
-			}
 		},
 		"JSONC": {
 			"tab_size": 2,
@@ -397,11 +372,6 @@
 				"json-language-server",
 				"..."
 			],
-			"code_actions_on_format": {
-				"source.fixAll.biome": true,
-				"source.organizeImports.biome": true,
-				"source.removeUnusedImports.biome": true
-			}
 		},
 		"Markdown": {
 			"tab_size": 2,
@@ -551,20 +521,16 @@
 				}
 			}
 		},
-		"biome": {
-			"settings": {
-				"require_config_file": false
-			}
-		},
 		"svelte-language-server": {
-			// "binary": {
-			// 	"path": "/home/g3ano/.bun/bin/bun",
-			// 	"arguments": [
-			// 		"--bun",
-			// 		"/home/g3ano/.bun/bin/typescript-language-server",
-			// 		"--stdio"
-			// 	]
-			// },
+			"binary": {
+				"path": "/home/g3ano/.bun/bin/bun",
+				"arguments": [
+					"run",
+					"--bun",
+					"/home/g3ano/.bun/bin/svelteserver",
+					"--stdio"
+				]
+			}
 		}
 	},
 	"terminal": {
