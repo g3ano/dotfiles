@@ -9,12 +9,12 @@
 		"light": "One Dark",
 		"dark": "One Dark Pro Max"
 	},
-	"ui_font_family": "JetBrains Mono",
+	"ui_font_family": "Adwaita Sans",
 	"ui_font_size": 17.5,
 	"buffer_font_family": "JetBrains Mono",
-	"buffer_font_size": 16,
+	"buffer_font_size": 17,
 	"agent_ui_font_size": 17,
-	"soft_wrap": "editor_width",
+	"soft_wrap": "preferred_line_length",
 	"base_keymap": "VSCode",
 	"max_tabs": 15,
 	"extend_comment_on_newline": true,
@@ -71,8 +71,8 @@
 		"single_file_review": true,
 		"default_profile": "write",
 		"default_model": {
-			"provider": "openrouter",
-			"model": "mistralai/mistral-small-3.1-24b-instruct:free"
+			"provider": "copilot_chat",
+			"model": "oswe-vscode-prime"
 		},
 		"default_width": 400
 	},
@@ -80,8 +80,8 @@
 		"edit_prediction_provider": "zed"
 	},
 	"edit_predictions": {
-		"disabled_globs": [],
-		"mode": "eager"
+		"mode": "eager",
+		"disabled_globs": []
 	},
 	"tab_bar": {
 		"show": false,
@@ -122,7 +122,8 @@
 		"**/.cache",
 		"**/node_modules",
 		"**/.svelte-kit",
-		"**/.react-router"
+		"**/.react-router",
+		"**/routeTree.gen.ts"
 	],
 	"active_pane_modifiers": {
 		"border_size": 1,
@@ -162,7 +163,7 @@
 		"auto_reveal_entries": true,
 		"folder_icons": false,
 		"file_icons": true,
-		"indent_size": 22,
+		"indent_size": 20,
 		"hide_gitignore": false,
 		"entry_spacing": "comfortable",
 		"sticky_scroll": false,
@@ -180,6 +181,7 @@
 		}
 	},
 	"outline_panel": {
+		"button": true,
 		"default_width": 400
 	},
 	"telemetry": {
@@ -193,9 +195,9 @@
 		"show_project_items": true
 	},
 	"search": {
+		"button": true,
 		"case_sensitive": false,
-		"include_ignored": false,
-		"button": false
+		"include_ignored": false
 	},
 	"debugger": {
 		"button": false
@@ -249,83 +251,123 @@
 		"JavaScript": {
 			"tab_size": 2,
 			"format_on_save": "on",
+			"prettier": {
+				"allowed": true
+			},
 			"formatter": {
-				"language_server": {
-					"name": "typescript-language-server"
+				"external": {
+					"command": "prettier",
+					"arguments": [
+						"--stdin-filepath",
+						"{buffer_path}"
+					]
 				}
 			},
 			"language_servers": [
-				"typescript-language-server",
+				"vtsls",
+				"!tsgo",
 				"!biome",
+				"!typescript-language-server",
 				"!tailwindcss-language-server",
-				"!vtsls",
 				"!eslint",
 				"..."
-			],
+			]
 		},
 		"JSX": {
 			"tab_size": 2,
 			"format_on_save": "on",
+			"prettier": {
+				"allowed": true
+			},
 			"formatter": {
-				"language_server": {
-					"name": "typescript-language-server"
+				"external": {
+					"command": "prettier",
+					"arguments": [
+						"--stdin-filepath",
+						"{buffer_path}"
+					]
 				}
 			},
 			"language_servers": [
-				"typescript-language-server",
-				"tailwindcss-language-server",
+				"vtsls",
+				"!tsgo",
 				"!biome",
-				"!vtsls",
+				"tailwindcss-language-server",
+				"!typescript-language-server",
 				"!eslint",
 				"..."
-			],
+			]
 		},
 		"TypeScript": {
 			"tab_size": 2,
 			"format_on_save": "on",
+			"prettier": {
+				"allowed": true
+			},
 			"formatter": {
-				"language_server": {
-					"name": "typescript-language-server"
+				"external": {
+					"command": "prettier",
+					"arguments": [
+						"--stdin-filepath",
+						"{buffer_path}"
+					]
 				}
 			},
 			"language_servers": [
-				"typescript-language-server",
+				"vtsls",
+				"!tsgo",
 				"!biome",
-				"!vtsls",
-				"!eslint",
+				"!typescript-language-server",
 				"!tailwindcss-language-server",
+				"!eslint",
 				"..."
-			],
+			]
 		},
 		"TSX": {
 			"tab_size": 2,
 			"format_on_save": "on",
+			"prettier": {
+				"allowed": true
+			},
 			"formatter": {
-				"language_server": {
-					"name": "typescript-language-server"
+				"external": {
+					"command": "prettier",
+					"arguments": [
+						"--stdin-filepath",
+						"{buffer_path}"
+					]
 				}
 			},
 			"language_servers": [
-				"typescript-language-server",
-				"tailwindcss-language-server",
+				"vtsls",
+				"!tsgo",
 				"!biome",
-				"!vtsls",
+				"tailwindcss-language-server",
+				"!typescript-language-server",
 				"!eslint",
 				"..."
-			],
+			]
 		},
 		"CSS": {
 			"tab_size": 2,
 			"hard_tabs": true,
 			"format_on_save": "on",
+			"prettier": {
+				"allowed": true
+			},
 			"formatter": {
-				"language_server": {
-					"name": "vscode-css-language-server"
+				"external": {
+					"command": "prettier",
+					"arguments": [
+						"--stdin-filepath",
+						"{buffer_path}"
+					]
 				}
 			},
 			"language_servers": [
 				"vscode-css-language-server",
 				"tailwindcss-language-server",
+				"!biome",
 				"..."
 			]
 		},
@@ -333,9 +375,16 @@
 			"tab_size": 2,
 			"hard_tabs": true,
 			"format_on_save": "on",
+			"prettier": {
+				"allowed": true
+			},
 			"formatter": {
-				"language_server": {
-					"name": "vscode-html-language-server"
+				"external": {
+					"command": "prettier",
+					"arguments": [
+						"--stdin-filepath",
+						"{buffer_path}"
+					]
 				}
 			},
 			"language_servers": [
@@ -357,7 +406,7 @@
 			"language_servers": [
 				"json-language-server",
 				"..."
-			],
+			]
 		},
 		"JSONC": {
 			"tab_size": 2,
@@ -371,12 +420,15 @@
 			"language_servers": [
 				"json-language-server",
 				"..."
-			],
+			]
 		},
 		"Markdown": {
 			"tab_size": 2,
 			"hard_tabs": false,
 			"format_on_save": "on",
+			"prettier": {
+				"allowed": true
+			},
 			"formatter": {
 				"external": {
 					"command": "prettier",
@@ -391,6 +443,9 @@
 			"tab_size": 2,
 			"hard_tabs": false,
 			"format_on_save": "on",
+			"prettier": {
+				"allowed": true
+			},
 			"formatter": {
 				"external": {
 					"command": "prettier",
@@ -414,9 +469,16 @@
 		"Svelte": {
 			"tab_size": 2,
 			"format_on_save": "on",
+			"prettier": {
+				"allowed": true
+			},
 			"formatter": {
-				"language_server": {
-					"name": "svelte-language-server"
+				"external": {
+					"command": "prettier",
+					"arguments": [
+						"--stdin-filepath",
+						"{buffer_path}"
+					]
 				}
 			},
 			"language_servers": [
@@ -432,14 +494,6 @@
 	},
 	"lsp": {
 		"typescript-language-server": {
-			"binary": {
-				"path": "/home/g3ano/.bun/bin/bun",
-				"arguments": [
-					"--bun",
-					"/home/g3ano/.bun/bin/typescript-language-server",
-					"--stdio"
-				]
-			},
 			"settings": {
 				"typescript": {
 					"tsserver": {
@@ -466,33 +520,110 @@
 				}
 			}
 		},
-		"tailwindcss-language-server": {
-			"binary": {
-				"path": "/home/g3ano/.bun/bin/bun",
-				"arguments": [
-					"--bun",
-					"/home/g3ano/.bun/bin/tailwindcss-language-server",
-					"--stdio"
-				]
-			},
+		"vtsls": {
 			"settings": {
-				"lint": {
-					"cssConflict": false,
-					"invalidApply": false,
-					"invalidScreen": false,
-					"invalidVariant": false
+				"typescript": {
+					"tsserver": {
+						"maxTsServerMemory": 1024,
+						"disableAutomaticTypeAcquisition": true,
+						"experimental": {
+							"enableProjectDiagnostics": false
+						},
+						"watchOptions": {
+							"excludeDirectories": [
+								"**/node_modules",
+								"**/.git",
+								"**/dist",
+								"**/build",
+								"**/.next",
+								"**/.svelte-kit"
+							]
+						}
+					},
+					"suggest": {
+						"enabled": true
+					},
+					"validate": {
+						"enable": true
+					},
+					"preferences": {
+						"disableSuggestions": false,
+						"includePackageJsonAutoImports": "off",
+						"includeCompletionsForModuleExports": false,
+						"includeCompletionsWithSnippetText": false,
+						"autoImportFileExcludePatterns": [
+							"**/node_modules/**"
+						]
+					},
+					"inlayHints": {
+						"parameterNames": {
+							"enabled": "none"
+						},
+						"parameterTypes": {
+							"enabled": false
+						},
+						"variableTypes": {
+							"enabled": false
+						},
+						"propertyDeclarationTypes": {
+							"enabled": false
+						},
+						"functionLikeReturnTypes": {
+							"enabled": false
+						},
+						"enumMemberValues": {
+							"enabled": false
+						}
+					},
+					"format": {
+						"enable": true,
+						"indentSize": 2,
+						"convertTabsToSpaces": false,
+						"semicolons": "remove",
+						"trimTrailingWhitespace": true,
+						"insertSpaceAfterCommaDelimiter": true,
+						"insertSpaceAfterKeywordsInControlFlowStatements": true,
+						"insertSpaceBeforeAndAfterBinaryOperators": true
+					}
 				},
-				"validate": false,
-				"showPixelEquivalents": false,
-				"classFunctions": [
-					"cva",
-					"cx"
-				],
-				"experimental": {
-					"classRegex": [
-						"className=\"([^\"]*)\"",
-						"class=\"([^\"]*)\""
-					]
+				"javascript": {
+					"format": {
+						"enable": true,
+						"indentSize": 2,
+						"convertTabsToSpaces": false,
+						"semicolons": "remove",
+						"trimTrailingWhitespace": true
+					}
+				}
+			}
+		},
+		"tailwindcss": {
+			"settings": {
+				"tailwindCSS": {
+					"validate": false,
+					"suggestions": false,
+					"emmetCompletions": false,
+					"classAttributes": [
+						"class",
+						"className"
+					],
+					"classFunctions": [
+						"cva",
+						"cx",
+						"tv"
+					],
+					"lint": {
+						"invalidApply": "ignore",
+						"invalidScreen": "ignore",
+						"invalidVariant": "ignore",
+						"invalidConfigPath": "ignore",
+						"recommendedVariantOrder": "ignore"
+					},
+					"colorDecorators": false,
+					"showPixelEquivalents": false,
+					"experimental": {
+						"classRegex": []
+					}
 				}
 			}
 		},
@@ -519,17 +650,6 @@
 					},
 					"includeLanguages": {}
 				}
-			}
-		},
-		"svelte-language-server": {
-			"binary": {
-				"path": "/home/g3ano/.bun/bin/bun",
-				"arguments": [
-					"run",
-					"--bun",
-					"/home/g3ano/.bun/bin/svelteserver",
-					"--stdio"
-				]
 			}
 		}
 	},

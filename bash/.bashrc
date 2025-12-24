@@ -82,8 +82,8 @@ git_branch() {
 export PS1="\[\033[1;32m\]\u@\h\[\033[0m\]:\[\033[1;32m\]\w\[\033[0m\]\$(git_branch)$ "
 
 # Editors
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=hx
+export VISUAL=hx
 
 # Tools
 # Go
@@ -99,14 +99,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-
-# Bun
-export BUN_INSTALL="$HOME/.bun"
-
-if ! echo ":$PATH:" | grep -q ":$BUN_INSTALL/bin:"; then
-	export PATH="$PATH:$BUN_INSTALL/bin"
-fi
-
 # pnpm
 export PNPM_HOME="/home/g3ano/.local/share/pnpm"
 
@@ -114,6 +106,13 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+
+if ! echo ":$PATH:" | grep q ":$BUN_INSTALL/bin:"; then
+	export PATH="$PATH:$BUN_INSTALL/bin"
+fi
 
 # Flatpak exports
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/$USER/.local/share/flatpak/exports/share
